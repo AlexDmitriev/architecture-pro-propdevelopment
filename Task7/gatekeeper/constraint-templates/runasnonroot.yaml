@@ -1,0 +1,41 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequirenonrootreadonly
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequireNonRootReadonly
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8srequirenonrootreadonly
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Pod"
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.runAsNonRoot
+          msg := sprintf("container %q must set runAsNonRoot=true", [container.name])
+        }
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Pod"
+          container := input.review.object.spec.containers[_]
+          container.securityContext.runAsNonRoot != true
+          msg := sprintf("container %q must set runAsNonRoot=true", [container.name])
+        }
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Pod"
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.readOnlyRootFilesystem
+          msg := sprintf("container %q must set readOnlyRootFilesystem=true", [container.name])
+        }
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Pod"
+          container := input.review.object.spec.containers[_]
+          container.securityContext.readOnlyRootFilesystem != true
+          msg := sprintf("container %q must set readOnlyRootFilesystem=true", [container.name])
+        }
