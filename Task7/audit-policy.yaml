@@ -1,0 +1,33 @@
+# Пример политики аудита API-сервера Kubernetes (audit.k8s.io/v1).
+# Подключение: флаг apiserver --audit-policy-file=/path/to/audit-policy.yaml
+apiVersion: audit.k8s.io/v1
+kind: Policy
+omitStages:
+  - "RequestReceived"
+rules:
+  # Снижение шума от высокочастотных watch у системных учётных записей
+  - level: None
+    users:
+      - system:kube-proxy
+    verbs: ["watch"]
+    resources:
+      - group: ""
+        resources: ["endpoints", "endpointslices", "services"]
+
+  # Поды — полное тело запроса/ответа (для расследований)
+  - level: RequestResponse
+    resources:
+      - group: ""
+        resources: ["pods", "pods/status"]
+    verbs: ["create", "update", "patch", "delete"]
+
+  # Остальные объекты в core — метаданные
+  - level: Metadata
+    resources:
+      - group: ""
+        resources: ["secrets", "configmaps", "serviceaccounts"]
+
+  # Всё остальное — минимальный уровень (Metadata)
+  - level: Metadata
+    omitStages:
+      - "RequestReceived"

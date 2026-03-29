@@ -1,0 +1,25 @@
+@startuml
+!theme cerulean
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+top to bottom direction
+
+Person(user, "Пользователь", "Собственник жилья")
+
+System_Boundary(c0, "Группа сервисов ЖКУ") {
+  System(mobileApp, "Витрина сервисов для собственников", "Мобильное приложение")
+  System(smartHouseSystem, "система Умный Дом", "Сервис управления устройствами")
+  System(authService, "Система авторизации", "auth-service-1")
+}
+
+System_Boundary(c1, "Внешние устройства") {
+  System_Ext(gateApi, "Управление шлагбаумом", "Микросервис управления шлагбаумом")
+  System_Ext(domophoneApi, "Домофон", "Микросервис управления домофоном")
+}
+
+Rel(user, mobileApp, "Управление устройствами")
+Rel(mobileApp, authService, "Авторизация и аутентификация пользователей")
+Rel(mobileApp, smartHouseSystem, "Управление умными устройствами")
+Rel(smartHouseSystem, domophoneApi, "Управление домофоном")
+Rel(smartHouseSystem, gateApi, "Управление шлагбаумом")
+@enduml
