@@ -1,5 +1,7 @@
 | Роль  | Права роли | Группы пользователей |
 | --- | --- | --- |
-| admin-role | create, update, patch, get, list, watch | инженеры по эксплуатации |
-| devops-role | update, patch, get, list, watch | разработчики, DevOps-инженеры |
-| manager-role | get, list, watch | владельцы продукта, бизнес-аналитики |
+| admin-role | привилегированный доступ (в т.ч. к secrets): create, update, patch, get, list, watch | инженеры по эксплуатации |
+| devops-role | ограниченное администрирование (без доступа к secrets): update, patch, get, list, watch (только для ограниченного набора ресурсов) | разработчики, DevOps-инженеры |
+| manager-role | просмотр (read-only, без доступа к secrets): get, list, watch (только для ограниченного набора ресурсов) | владельцы продукта, бизнес-аналитики |
+
+Примечание: в `rolebindings.yaml` для упрощения используются `ServiceAccount` (admin/devops/manager) как представители соответствующих групп пользователей; права задаются через `Role` в `roles.yaml`.

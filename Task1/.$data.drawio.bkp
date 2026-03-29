@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
   <diagram name="Страница-1" id="dpNWkIv-jW8gh8OThkGQ">
-    <mxGraphModel dx="3420" dy="1529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2253" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,7 +8,7 @@
           <mxGeometry height="250" width="700" x="-800" y="20" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="270" width="270" x="-30" y="665" as="geometry" />
+          <mxGeometry height="335" width="270" x="-30" y="665" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
           <mxGeometry height="270" width="270" x="557" y="665" as="geometry" />
@@ -68,7 +68,7 @@
           <mxGeometry height="60" width="240" x="-80" y="315" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="информация об устройствах &lt;br&gt;умного дома" vertex="1">
-          <mxGeometry height="60" width="240" x="690" y="245" as="geometry" />
+          <mxGeometry height="60" width="240" x="-80" y="920" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="информация &lt;br&gt;об осмотрах недвижимости" vertex="1">
           <mxGeometry height="60" width="240" x="690" y="315" as="geometry" />
@@ -121,9 +121,6 @@
         <mxCell id="b28JIRhEYnLynsa4k-Dy-35" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;rounded=0;" value="Обесценивание данных" vertex="1">
           <mxGeometry height="30" width="160" x="-451" y="150" as="geometry" />
         </mxCell>
-        <mxCell id="b28JIRhEYnLynsa4k-Dy-38" edge="1" parent="1" source="b28JIRhEYnLynsa4k-Dy-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.384;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="b28JIRhEYnLynsa4k-Dy-37">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
           <mxGeometry height="250" width="380" x="-619" y="355" as="geometry" />
         </mxCell>
@@ -167,13 +164,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-66" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="150" width="380" x="557" y="20" as="geometry" />
+          <mxGeometry height="150" width="380" x="-160" y="1120" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;" value="&lt;br&gt;значительный, нарушение работы устройств умного дома, репутационные потери" vertex="1">
-          <mxGeometry height="90" width="320" x="586" y="50" as="geometry" />
+          <mxGeometry height="90" width="320" x="-131" y="1150" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-68" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;rounded=0;" value="Искажение данных" vertex="1">
-          <mxGeometry height="30" width="160" x="586" y="50" as="geometry" />
+          <mxGeometry height="30" width="160" x="-131" y="1150" as="geometry" />
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-70" edge="1" parent="1" source="b28JIRhEYnLynsa4k-Dy-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.474;entryY=0.993;entryDx=0;entryDy=0;entryPerimeter=0;" target="b28JIRhEYnLynsa4k-Dy-66">
           <mxGeometry relative="1" as="geometry" />
@@ -243,6 +240,9 @@
         </mxCell>
         <mxCell id="b28JIRhEYnLynsa4k-Dy-95" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;rounded=0;" value="Потеря данных" vertex="1">
           <mxGeometry height="30" width="160" x="1029" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="b28JIRhEYnLynsa4k-Dy-98" edge="1" parent="1" source="b28JIRhEYnLynsa4k-Dy-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1.001;entryY=0.474;entryDx=0;entryDy=0;entryPerimeter=0;" target="b28JIRhEYnLynsa4k-Dy-37">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

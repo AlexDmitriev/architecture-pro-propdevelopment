@@ -3,33 +3,26 @@
 ## Подозрительные события
 
 1. Доступ к секретам:
-   - kubernetes-admin
-   - Где: 192.168.49.2
-   - secrets \"bootstrap-token-yyppb9\" not found", обращение к несуществующему токену
+ - Кто: system:serviceaccount:secure-ops:monitoring
+ - Где: namespace kube-system
+ - Почему подозрительно: сервисный аккаунт из secure-ops пытался получить доступ к secrets в системном namespace kube-system; запрос завершился 403 Forbidden
 
 2. Привилегированные поды:
-   - minikube-user
-   - Попытка применить к поду комманду (sleep 3600)
+ - Кто: minikube-user
+ - Комментарий: был создан pod privileged-pod в namespace secure-ops с securityContext.privileged: true, что даёт контейнеру повышенные привилегии на узле
 
 3. Использование kubectl exec в чужом поде:
-   - Использование exec не выявлено
+ - Кто: minikube-user
+ - Что делал: выполнил cat /etc/resolv.conf через kubectl exec в pod coredns-7d764666f9-brt5h в namespace kube-system
 
 4. Создание RoleBinding с правами cluster-admin:
-   - kubernetes-admin
-   - Назначение роли ClusterRole группе kubeadm:cluster-admins
+ - Кто: minikube-user
+ - К чему привело: создан RoleBinding escalate-binding в namespace secure-ops, который привязывает service account monitoring к ClusterRole cluster-admin, то есть фактически повышает его права до административных
 
 5. Удаление audit-policy.yaml:
-   - Попыток удаления audit-policy.yaml не выявлено
-   - (тут, возможно надо подправить задание, т.к
-   ```
-   ➜  kube kubectl delete -f /etc/kubernetes/audit-policy.yaml --as=root
-   error: the path "/etc/kubernetes/audit-policy.yaml" does not exist
-   ```
-   попытка удаления из скрипта отваливается с ошибкой, возможно старая версия minikube) 
+- Команда kubectl delete -f /etc/kubernetes/audit-policy.yaml --as=admin завершается ошибкой resource mapping not found, потому что audit.k8s.io/v1, kind=Policy не является API-ресурсом Kubernetes. Это конфигурационный файл для kube-apiserver, а не объект, управляемый через Kubernetes API. Поэтому операция не приводит к появлению корректного события удаления в audit log.
 
 
 ## Вывод
 
-1) Осуществляется несанкционированный доступ к секретам, попытка угадать токен. 
-2) Происходят попытка подготовить точку входа/эскалации через привилегированый под.
-3) Попытка расширить привелегии группы, нет понимания, санкционированные или нет
+В журнале аудита зафиксированы признаки попытки повышения привилегий и доступа к критичным ресурсам кластера. Наиболее опасными событиями являются создание привилегированного pod и выдача service account monitoring прав cluster-admin, так как они создают возможность полного контроля над кластером. Дополнительно попытка доступа к secrets в kube-system и выполнение kubectl exec в системном pod указывают на разведку и попытку получить чувствительную информацию внутри кластера.
